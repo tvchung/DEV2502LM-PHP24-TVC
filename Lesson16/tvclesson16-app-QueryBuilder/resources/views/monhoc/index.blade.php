@@ -46,6 +46,13 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="card-footer">
+                <h5>Tổng số môn học: <strong class="text-danger">{{$monHocs->count()}}</strong></h5>
+                <p>Môn học có số tiết lớn nhất: <strong class="text-primary">{{$monHocs->max('Sotiet')}}</strong> </p>
+                <p>Môn học có số tiết nhỏ nhất: <strong class="text-secondary">{{$monHocs->min('Sotiet')}}</strong> </p>
+                <p>Số tiết trung bình: <strong class="text-success">{{number_format($monHocs->avg('Sotiet'),2)}}</strong> </p>
+            </div>
         </div>
         
     </div>
