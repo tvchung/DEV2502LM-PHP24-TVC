@@ -44,3 +44,7 @@ Route::get('/mon-hoc/detail/{mamh}',[MonHocController::class,'getMonHocById'])->
 Route::get('/mon-hoc/create',[MonHocController::class,'create'])->name('monhoc.create');
 Route::post('/mon-hoc/create',[MonHocController::class,'createSubmit'])->name('monhoc.createSubmit');
 
+Route::get('/mon-hoc/edit/{mamh}',[MonHocController::class,'edit'])->name('monhoc.edit');
+Route::post('/mon-hoc/edit',[MonHocController::class,'editSubmit'])->name('monhoc.editSubmit');
+
+Route::get('/mon-hoc/delete/{mamh}', [MonHocController::class, 'delete'])->name('monhoc.delete');

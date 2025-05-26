@@ -33,8 +33,13 @@
                                 <td class="text-center">
                                     <a href="/mon-hoc/detail/{{$item->MaMH}}" class="btn btn-success">
                                         Chi tiết</a>
-                                    
-                                    | Sửa | Xóa
+                                    <a href="/mon-hoc/edit/{{$item->MaMH}}" class="btn btn-primary">
+                                        Sửa</a>
+                                    {{-- <a href="{{ route('monhoc.delete', ['mamh' => $item->MaMH]) }}" class="btn btn-danger" 
+                                        onclick="return confirm('Bạn chắc chắn muốn xóa môn học này?');"
+                                        >
+                                        Xóa</a> --}}
+                                    <a href="#" onclick="confirmDelete('{{ route('monhoc.delete', ['mamh' => $item->MaMH]) }}')" class="btn btn-danger" >Xóa</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -44,4 +49,34 @@
         </div>
         
     </div>
+
+    <script>
+        function confirmDelete(url) {
+            Swal.fire({
+                title: 'Bạn chắc chắn muốn xóa?',
+                text: "Sau khi xóa, bạn sẽ không thể khôi phục dữ liệu này!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Vâng, xóa đi!',
+                cancelButtonText: 'Không'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            })
+        }
+    </script>
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Thành công!',
+            text: '{{ session('success') }}',
+            timer: 1500,
+            showConfirmButton: false
+        });
+    </script>
+    @endif
 @endsection
